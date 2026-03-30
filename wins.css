@@ -1,0 +1,88 @@
+#btn{
+    background-color: red;
+    padding: 50px;
+    margin-top: 25%;
+    margin-left: 50%;
+    border: none;
+    border-radius: 100%;
+    
+}
+#title{
+    border-right: .15em solid orange;
+    display: none;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#oops{
+    animation: 
+    typing 4.5s steps(30) forwards,
+blink.15s step-end infinite alternate;
+white-space: nowrap;
+overflow: hidden;
+font-family: monospace;
+font-size: 2em;
+width: 100%;
+height: 100%;
+opacity: 0.8;
+    display: grid;
+    place-items: center;
+}
+
+@keyframes typing{
+    from {width: 0;}
+    to {width: 100%;}
+}
+ @keyframes blink-caret{
+    from,to{ border-color: transparent}
+    50%{border-color: orange;}
+ }
+    
+#nxt{
+    background-color: red;
+    padding: 20px;
+    border-radius: 75%;
+    align-items: center;
+    display: none;
+}
+#pics{
+    display: none;
+}
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: 80px;
+    background: red;
+    border-radius: 50%;
+    animation: floatUp 6s infinite ease-in;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background: #555;
+    left: 50%;
+    top: 80px;
+}
+@keyframes floatup{
+    0%{bottom: -150px;
+    opacity: 1;
+}
+100%{
+    bottom: 110%;
+    opacity: 0;;
+}
+}
+/* Balloon colors */
+.balloon:nth-child(1){left:10%; background:#ff4d4d; animation-duration:6s;}
+.balloon:nth-child(2){left:30%; background:#4da6ff; animation-duration:7s;}
+.balloon:nth-child(3){left:50%; background:#66ff66; animation-duration:5s;}
+.balloon:nth-child(4){left:70%; background:#ffcc00; animation-duration:6.5s;}
+.balloon:nth-child(5){left:90%; background:purple; animation-duration:7.5s;}
+.balloon:nth-child(6){left:20%; background:blueviolet; animation-duration:2s;}
+.balloon:nth-child(7){left:40%; background:lightseagreen; animation-duration:3s;}
+.balloon:nth-child(8){left:50%; background:green; animation-duration:1s;}
+.balloon:nth-child(9){left:60%; background:blue; animation-duration:6s;}
+.balloon:nth-child(10){left:100%; background:black; animation-duration:8s;}

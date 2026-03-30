@@ -1,0 +1,17 @@
+nav{
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+li{
+    width: 30px;
+    margin-right: 70px;
+}
+ul{list-style-type: none;
+padding: 0;
+}

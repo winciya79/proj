@@ -1,0 +1,46 @@
+<h1>Guess The Number from 1 to 10</h1>
+<input type="number" id="input">
+<button onclick="update()">check</button>
+<p id="right">you are right/wrong!</p>
+<p id="wrong">your score:10</p>
+<button onclick="add()">reset</button>
+<script>
+    //select input, right, wrong
+    var input=document.getElementById("input")
+     var randomnumber=Math.random (Math.floor()*10)+1
+      var right=document.getElementById("right")
+       var wrong=document.getElementById("wrong")
+     var result=10
+    function update()
+{var enteredNumber=input
+   
+    if(randomnumber==enteredNumber)
+{
+   right.textContent="right"
+   alert("won! The guess number is"+randomnumber) 
+}
+else{
+    right.textContent="wrong"
+    result=result-1 
+    wrong.textContent="your score"+result
+}
+if(result <=0)
+{
+    alert("Game over!The guessnumber is"+randomnumber)
+    
+}
+}
+function add()
+{//generate a new randomnumber
+    randomnumber=Math.floor(Math.random()*10)+1
+    
+    //select result
+    result=10
+   // reet 
+    wrong.textContent="your score : 10"
+    right.textContent="right"
+    input.value=""
+    
+
+}
+</script>

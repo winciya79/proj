@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* Title */
+h1 {
+    font-size: 3em;
+    margin-top: 20px;
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Message */
+p {
+    font-size: 1.3em;
+    color: #fff;
+}
+
+/* Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 15px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 60px;
+    height: 80px;
+    background: red;
+    border-radius: 50%;
+    animation: floatUp 6s infinite ease-in;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background: #555;
+    left: 50%;
+    top: 80px;
+}
+
+/* Balloon colors */
+.balloon:nth-child(1){left:10%; background:#ff4d4d; animation-duration:6s;}
+.balloon:nth-child(2){left:30%; background:#4da6ff; animation-duration:7s;}
+.balloon:nth-child(3){left:50%; background:#66ff66; animation-duration:5s;}
+.balloon:nth-child(4){left:70%; background:#ffcc00; animation-duration:6.5s;}
+.balloon:nth-child(5){left:90%; background:#cc66ff; animation-duration:7.5s;}
+
+@keyframes floatUp {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-110vh);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Button */
+button {
+    padding: 12px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    color: #ff4081;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #ff4081;
+    color: white;
+}
+
+/* Confetti */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday AKKA! 🎂</h1>
+<p>Wishing you a day filled with love, joy, and happiness!</p>
+
+<button onclick="startConfetti()">Celebrate 🎊</button>
+
+<!-- Photo Gallery -->
+<div class="gallery">
+    <img src="https://picsum.photos/200?1">
+    <img src="https://picsum.photos/200?2">
+    <img src="https://picsum.photos/200?3">
+    <img src="https://picsum.photos/200?4">
+</div>
+
+<!-- Balloons -->
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+
+function startConfetti() {
+    pieces = [];
+    for (let i = 0; i < 150; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 8 + 2,
+            speed: Math.random() * 3 + 2,
+            color: `hsl(${Math.random()*360},100%,50%)`
+        });
+    }
+    animate();
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+
+        p.y += p.speed;
+        if (p.y > canvas.height) {
+            p.y = 0;
+            p.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(animate);
+}
+
+</script>
+
+</body>
+</html>
